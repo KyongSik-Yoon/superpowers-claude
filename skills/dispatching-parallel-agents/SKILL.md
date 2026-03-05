@@ -75,9 +75,10 @@ See **superpowers:dynamic-model-selection** for the full routing guide.
 
 ```typescript
 // In Claude Code / AI environment - match model to task complexity
-Agent(model: "sonnet", prompt: "Fix agent-tool-abort.test.ts failures")      // Known timing issues
-Agent(model: "sonnet", prompt: "Fix batch-completion-behavior.test.ts")      // Structural bug
-Agent(model: "opus", prompt: "Fix tool-approval-race-conditions.test.ts")    // Race condition needs reasoning
+// Include [model] in description so the agent list shows which model each uses
+Agent(model: "sonnet", description: "[sonnet] Fix agent-tool-abort.test.ts", prompt: "Fix agent-tool-abort.test.ts failures")
+Agent(model: "sonnet", description: "[sonnet] Fix batch-completion-behavior.test.ts", prompt: "Fix batch-completion-behavior.test.ts")
+Agent(model: "opus", description: "[opus] Fix tool-approval-race-conditions.test.ts", prompt: "Fix tool-approval-race-conditions.test.ts")
 // All three run concurrently
 ```
 

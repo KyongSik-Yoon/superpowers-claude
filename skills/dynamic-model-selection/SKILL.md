@@ -100,24 +100,37 @@ digraph model_selection {
 
 ## How to Apply
 
+### Description Convention: `[model]` Prefix
+
+**Always prefix the agent `description` with `[model]`** so the agent list in Claude Code shows which model each agent uses at a glance:
+
+```
+├─ [sonnet] Implement Task 1: Add validation     ← model visible without expanding
+├─ [opus] Debug race condition in auth flow
+├─ [haiku] Update import paths
+```
+
+Format: `description: "[model] <task summary>"`
+
 ### In Agent Tool Calls
 
 When dispatching subagents, set the `model` parameter:
 
 ```typescript
+// Include [model] in description so the agent list shows which model each uses
 // Complex debugging - needs opus
 Agent(subagent_type: "general-purpose", model: "opus",
-  description: "Debug race condition in auth flow",
+  description: "[opus] Debug race condition in auth flow",
   prompt: "Investigate the intermittent auth failure...")
 
 // Implementation from clear plan - sonnet is sufficient
 Agent(subagent_type: "general-purpose", model: "sonnet",
-  description: "Implement Task 3: Add user validation",
+  description: "[sonnet] Implement Task 3: Add user validation",
   prompt: "You are implementing Task 3...")
 
 // File search and report - haiku handles this fine
 Agent(subagent_type: "Explore", model: "haiku",
-  description: "Find all auth-related files",
+  description: "[haiku] Find all auth-related files",
   prompt: "List all files related to authentication...")
 ```
 
@@ -138,9 +151,10 @@ When dispatching parallel agents:
 
 ```typescript
 // Mix models based on each task's complexity
-Agent(model: "sonnet", prompt: "Fix test timing in abort.test.ts...")  // Known issue
-Agent(model: "opus", prompt: "Debug flaky race condition...")           // Unknown root cause
-Agent(model: "haiku", prompt: "Update import paths in 5 files...")     // Mechanical
+// Include [model] in description for visibility in agent list
+Agent(model: "sonnet", description: "[sonnet] Fix test timing in abort.test.ts", prompt: "Fix test timing...")
+Agent(model: "opus", description: "[opus] Debug flaky race condition", prompt: "Debug flaky race condition...")
+Agent(model: "haiku", description: "[haiku] Update import paths in 5 files", prompt: "Update import paths...")
 ```
 
 ## Cost Impact

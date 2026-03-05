@@ -101,10 +101,10 @@ Use **superpowers:dynamic-model-selection** to optimize cost. Not every subagent
 
 **Example dispatch with model selection:**
 ```
-[Dispatch implementer subagent: model=sonnet]     // Clear spec, single-file scope
-[Dispatch spec reviewer: model=sonnet]             // Comparing code vs explicit requirements
-[Dispatch code quality reviewer: model=opus]       // Deep analysis of quality, coupling, edge cases
-[Dispatch final reviewer: model=opus]              // Cross-cutting system-wide review
+[Dispatch implementer: description="[sonnet] Implement Task N: ..."]     // Clear spec, single-file scope
+[Dispatch spec reviewer: description="[sonnet] Review spec compliance for Task N"]  // Comparing code vs explicit requirements
+[Dispatch code quality reviewer: description="[opus] Code quality review for Task N"]  // Deep analysis
+[Dispatch final reviewer: description="[opus] Final cross-cutting review"]  // System-wide review
 ```
 
 **Escalation rules:**
