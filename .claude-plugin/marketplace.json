@@ -7,7 +7,7 @@
   },
   "plugins": [
     {
-      "name": "superpowers",
+      "name": "superpowers-claude",
       "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
       "version": "0.1.0",
       "source": "./",
