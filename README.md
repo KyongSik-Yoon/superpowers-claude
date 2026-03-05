@@ -38,6 +38,7 @@ There's a bunch more to it, but that's the core of the system. And because the s
 In Claude Code:
 
 ```bash
+/plugin marketplace add KyongSik-Yoon/superpowers-claude
 /plugin install superpowers-claude@superpowers-claude
 ```
 
