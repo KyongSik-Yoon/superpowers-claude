@@ -1,9 +1,11 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release (e.g. v0.1.0)'
+        required: true
 
 permissions:
   contents: write
@@ -13,17 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Extract version from tag
-        id: version
-        run: echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+        with:
+          ref: ${{ inputs.tag }}
 
       - name: Delete existing release if any
-        run: gh release delete "${{ steps.version.outputs.tag }}" --yes || true
+        run: gh release delete "${{ inputs.tag }}" --yes || true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create GitHub Release
-        run: gh release create "${{ steps.version.outputs.tag }}" --title "${{ steps.version.outputs.tag }}" --notes-file RELEASE-NOTES.md
+        run: gh release create "${{ inputs.tag }}" --title "${{ inputs.tag }}" --notes-file RELEASE-NOTES.md
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
