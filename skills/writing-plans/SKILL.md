@@ -121,10 +121,10 @@ After saving and committing the plan, present a ready-to-use command block. Do N
 ```
 Plan saved to `docs/plans/<actual-filename>.md`.
 
-/clear 로 컨텍스트를 정리한 후 실행 스킬을 호출하세요:
+Run /clear to free up context, then invoke an execution skill:
 
   subagent-driven-development docs/plans/<actual-filename>.md
-  또는
+  or
   executing-plans docs/plans/<actual-filename>.md
 ```
 
