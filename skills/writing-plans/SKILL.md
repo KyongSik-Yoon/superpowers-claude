@@ -116,32 +116,16 @@ git commit -m "feat: add specific feature"
 
 ## Execution Handoff
 
-### Context Reset (Recommended)
+After saving and committing the plan, present a ready-to-use command block. Do NOT ask the user to choose — just give them the next step.
 
-After saving and committing the plan, **recommend a context reset before implementation.** Brainstorming + plan writing consumes significant context window. Starting implementation in a fresh session gives the full context window to the implementation phase.
+```
+Plan saved to `docs/plans/<actual-filename>.md`.
 
-Present this to the user:
+/clear 로 컨텍스트를 정리한 후 실행 스킬을 호출하세요:
 
-> "Plan saved and committed to `docs/plans/<filename>.md`. Brainstorming and plan writing have consumed significant context. **Starting implementation in a fresh session is recommended** so the full context window is available for implementation.
->
-> **Fresh session (recommended):** Open a new session in the worktree, then choose an execution approach:
-> - `subagent-driven-development` — fresh subagent per task, review between tasks, fast iteration
-> - `executing-plans` — batch execution with review checkpoints
->
-> **Continue in this session:** Possible, but context may become constrained during implementation.
->
-> Which do you prefer?"
+  subagent-driven-development docs/plans/<actual-filename>.md
+  또는
+  executing-plans docs/plans/<actual-filename>.md
+```
 
-### If Fresh Session Chosen
-
-End here. The user will open a new conversation in the worktree and invoke their chosen execution skill with the plan doc path.
-
-### If Continue Chosen
-
-Ask which execution approach:
-
-**1. Subagent-Driven** - Fresh subagent per task, review between tasks, fast iteration
-- **REQUIRED SUB-SKILL:** Use superpowers:subagent-driven-development
-
-**2. Batch Execution** - Execute tasks in batches with review checkpoints
-- **REQUIRED SUB-SKILL:** Use superpowers:executing-plans
+**Important:** Replace `<actual-filename>` with the real plan file path. The user needs this because `/clear` wipes conversation context.
