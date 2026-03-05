@@ -18,27 +18,18 @@ Next up, once you say "go", it launches a *subagent-driven-development* process,
 There's a bunch more to it, but that's the core of the system. And because the skills trigger automatically, you don't need to do anything special. Your coding agent just has Superpowers.
 
 
-## Sponsorship
-
-If Superpowers has helped you do stuff that makes money and you are so inclined, I'd greatly appreciate it if you'd consider [sponsoring my opensource work](https://github.com/sponsors/obra).
-
-Thanks!
-
-- Jesse
-
-
 ## Installation
 
 In Claude Code, register the marketplace first:
 
 ```bash
-/plugin marketplace add obra/superpowers-marketplace
+/plugin marketplace add KyongSik-Yoon/superpowers-claude
 ```
 
-Then install the plugin from this marketplace:
+Then install the plugin:
 
 ```bash
-/plugin install superpowers@superpowers-marketplace
+/plugin install superpowers@superpowers-claude
 ```
 
 ### Verify Installation
@@ -101,6 +92,17 @@ Start a new session and ask for something that should trigger a skill (for examp
 
 Read more: [Superpowers for Claude Code](https://blog.fsck.com/2025/10/09/superpowers/)
 
+## Release
+
+Releases are automated via GitHub Actions. Push a version tag to create a release:
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The workflow creates a GitHub Release using the contents of `RELEASE-NOTES.md`.
+
 ## Contributing
 
 Skills live directly in this repository. To contribute:
@@ -124,7 +126,11 @@ Skills update automatically when you update the plugin:
 
 MIT License - see LICENSE file for details
 
+## Acknowledgments
+
+Original Superpowers by [Jesse Vincent](https://github.com/obra) — [obra/superpowers](https://github.com/obra/superpowers). If you find this useful, consider [sponsoring his work](https://github.com/sponsors/obra).
+
 ## Support
 
-- **Issues**: https://github.com/obra/superpowers/issues
-- **Marketplace**: https://github.com/obra/superpowers-marketplace
+- **Issues**: https://github.com/KyongSik-Yoon/superpowers-claude/issues
+- **Upstream**: https://github.com/obra/superpowers
