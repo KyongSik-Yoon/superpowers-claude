@@ -3,7 +3,22 @@
 > **Fork of [obra/superpowers](https://github.com/obra/superpowers)** — stripped to Claude Code only.
 > Upstream version: v4.3.1. For Cursor, Codex, or OpenCode support, use the original.
 
+[한국어](README.ko.md)
+
 Superpowers is a complete software development workflow for Claude Code, built on top of a set of composable "skills" and some initial instructions that make sure your agent uses them.
+
+## What's different in this fork
+
+This fork is specialized for Claude Code-only use with the following changes:
+
+**Removed (Claude Code only)**
+- Cursor plugin (`.cursor-plugin/`), Codex support (`.codex/`), OpenCode plugin (`.opencode/`) — all non-Claude platforms removed
+- `lib/skills-core.js` (OpenCode shared module), platform-specific docs and test suites
+- SessionStart hook simplified — removed Cursor `additional_context` field
+
+**Added**
+- **dynamic-model-selection** skill — routes subagent tasks to the right model tier (opus/sonnet/haiku) based on complexity, reducing cost ~40% while keeping quality where it matters
+- **GitHub Actions release workflow** — tag-push triggers automated GitHub Release from `RELEASE-NOTES.md`
 
 ## How it works
 
