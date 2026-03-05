@@ -2,7 +2,8 @@
   "name": "superpowers-dev",
   "description": "Development marketplace for Superpowers core skills library",
   "owner": {
-    "name": "KyongSik Yoon"
+    "name": "KyongSik Yoon",
+    "email": "sam1287@gmail.com"
   },
   "plugins": [
     {
@@ -11,7 +12,8 @@
       "version": "0.1.0",
       "source": "./",
       "author": {
-        "name": "KyongSik Yoon"
+        "name": "KyongSik Yoon",
+        "email": "sam1287@gmail.com"
       }
     }
   ]
